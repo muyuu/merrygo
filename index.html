@@ -1,0 +1,92 @@
+<style>
+  .l-container {
+    width: 1000px;
+    margin: auto;
+  }
+
+  /* carousel */
+  .l-carousel {
+    position: relative;
+    width: 800px;
+    height: 200px;
+    margin: auto;
+  }
+  .l-carousel__inner {
+    overflow: hidden;
+    width: 800px;
+    height: 200px;
+  }
+  .l-carousel__arrows {
+  }
+  .l-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -1em;
+    text-decoration: none;
+  }
+  .l-carousel__arrow--left {
+    left: -20px;
+  }
+  .l-carousel__arrow--right {
+    right: -20px;
+  }
+  .js-carousel__items{
+    position: relative;
+    width: 2000px;
+  }
+  .js-carousel__item{
+    float: left;
+    width: 800px;
+  }
+  .js-carousel__dots {
+    position: relative;
+    z-index: 10;
+    top: 10px;
+    text-align: center;
+  }
+  .js-carousel__dot {
+    display: inline-block;
+    margin: 0 10px;
+    text-align: center;
+    color: #b8c2d4;
+    font-size: 15px;
+    line-height: 15px;
+  }
+  .js-carousel__dot span {
+    cursor: pointer;
+  }
+  .js-carousel__dot.current {
+    color: #3e5783;
+  }
+</style>
+
+
+  <div class="l-container">
+    <div class="l-mt--15 l-carousel js-carousel">
+      <div class="l-carousel__inner">
+        <div class="js-carousel__items">
+          <div class="js-carousel__item">
+              <img src="http://placehold.jp/800x200.png?text=bnr1" width="800" height="200" alt="">
+          </div>
+          <div class="js-carousel__item">
+              <img src="http://placehold.jp/800x200.png?text=bnr2" width="800" height="200" alt="">
+          </div>
+          <div class="js-carousel__item">
+              <img src="http://placehold.jp/800x200.png?text=bnr3" width="800" height="200" alt="">
+          </div>
+          <div class="js-carousel__item">
+              <img src="http://placehold.jp/800x200.png?text=bnr4" width="800" height="200" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="l-carousel__arrows">
+        <a href="#" class="l-carousel__arrow l-carousel__arrow--left js-carousel__arrow js-carousel__arrowPrev">＜</a>
+        <a href="#" class="l-carousel__arrow l-carousel__arrow--right js-carousel__arrow js-carousel__arrowNext">＞</a>
+      </div>
+    </div>
+  </div>
+
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="carousel.js"></script>
+<script src="app.js"></script>
