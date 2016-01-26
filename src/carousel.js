@@ -10,35 +10,20 @@
     } else {
         root[moduleName] = definition(root, $);
     }
+
 })(function(root, $){
     "use strict";
 
     // -------------------------------------------------------
     // utility functions
     // -------------------------------------------------------
-    function existy(x){
-        return x != null;
-    }
+    const isUndefined = (obj)=>{ return obj === void 0; };
 
-    function truthy(x){
-        return (x !== false) && existy(x);
-    }
+    const trimDot = (string)=>{ return string.replace(".", ""); };
 
-    function isUndefined(obj){
-        return obj === void 0;
-    }
+    const trimSome = (string, some)=>{ return string.replace(some, ""); };
 
-    function trimDot(string){
-        return string.replace(".", "");
-    }
-
-    function trimSome(string, some){
-        return string.replace(some, "");
-    }
-
-    function putBothClasses(string, prefix){
-        return trimDot(string) + " " + trimSome(trimDot(string), prefix);
-    }
+    const putBothClasses = (string, prefix)=>{ return trimDot(string) + " " + trimSome(trimDot(string), prefix); };
 
 
     // -------------------------------------------------------
@@ -65,7 +50,7 @@
         var mappedlist = [];
         for (var i = 0; i < length; i++) {
             mappedlist[i] = new Module(opt, $list[i]);
-        };
+        }
         return mappedlist;
     }
 
@@ -128,6 +113,7 @@
 
         // timer
         this.timer = null;
+        this.resizeTimer = null;
 
         // states
         this.currentIndex = 0;
@@ -146,6 +132,7 @@
         this.startTimerEvent();
         this.setClickEvent();
         this.setHoverEvent();
+        this.setResizeEvent();
     }
 
     Module.prototype.setDom = function(){
@@ -264,6 +251,34 @@
         );
     };
 
+    Module.prototype.setResizeEvent = function(){
+        var __ = this;
+
+        $(window).on("resize", function(){
+            __.resizeHandler();
+        });
+    };
+
+    Module.prototype.resizeHandler = function() {
+        var self = this;
+
+        if (self.resizeTimer !== false) clearTimeout(self.resizeTimer);
+
+        self.resizeTimer = setTimeout(function() {
+            self.reset();
+        }, 200);
+    };
+
+    Module.prototype.reset = function() {
+        var __ = this;
+
+        __.cancelTimerEvent();
+        __.singleItemWidth = $(this.rootclass).outerWidth(true);
+        __.setCss();
+
+        __.startTimerEvent();
+    };
+
     Module.prototype.moveToIndex = function(index){
         if(typeof index !== 'number') return false;
         return this.move(index);
@@ -283,7 +298,7 @@
         var tmpIndex = __.currentIndex;
         var moveLength;
 
-        var leftCssVal = -(this.singleItemWidth * this.itemLength);
+        var leftCssVal = -(__.singleItemWidth * __.itemLength);
 
         switch(type){
             case 'next':
@@ -303,11 +318,11 @@
         // index
         __.pushCurrentClass(type);
 
-        this.$items.animate(
+        __.$items.animate(
             {
                 left: leftCssVal
             },
-            this.opt.duration,
+            __.opt.duration,
             function(){
                 __.arrowCallback(type, moveLength);
 
@@ -317,7 +332,7 @@
                 }
             }
         );
-        return this;
+        return __;
     };
 
     Module.prototype.pushCurrentClass = function(type){
@@ -331,6 +346,8 @@
         //dots
         __.$dot.removeClass(current);
         __.$dot.eq(index).addClass(current);
+
+        return __;
     };
 
     Module.prototype.changeIndex = function(type){
@@ -341,6 +358,8 @@
         if (typeof type === 'number') __.currentIndex = type;
 
         __.roundIndex();
+
+        return __;
     };
 
     Module.prototype.roundIndex = function(){
@@ -350,7 +369,7 @@
         if (__.currentIndex < 0) return __.currentIndex = __.itemLength - 1;
         return __.currentIndex = 0;
 
-        return;
+        return __;
     };
 
     Module.prototype.isValidIndex = function(){
@@ -359,28 +378,32 @@
     };
 
     Module.prototype.arrowCallback = function(type, moveLength){
-        var currentItem = this.$items.find(this.opt.item);
+        var __ = this;
+
+        var currentItem = __.$items.find(__.opt.item);
 
         //item move
-        if (type === 'next') this.$items.append(currentItem.first());
-        if (type === 'prev') this.$items.prepend(currentItem.last());
+        if (type === 'next') __.$items.append(currentItem.first());
+        if (type === 'prev') __.$items.prepend(currentItem.last());
 
         if (typeof type === 'number') {
             var abs = Math.abs(moveLength);
 
             for (var i = 0; i < abs; i++) {
                 if(moveLength > 0) {
-                    this.$items.append(this.$items.find(this.opt.item).first());
+                    __.$items.append(__.$items.find(__.opt.item).first());
                 } else {
-                    this.$items.prepend(this.$items.find(this.opt.item).last());
+                    __.$items.prepend(__.$items.find(__.opt.item).last());
                 }
             }
         }
 
         //css reset
-        this.$items.css({
-            left: -(this.singleItemWidth * this.itemLength)
+        __.$items.css({
+            left: -(__.singleItemWidth * __.itemLength)
         });
+
+        return __;
     };
 
     return factory;
