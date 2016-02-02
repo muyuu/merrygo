@@ -1,90 +1,100 @@
-<style>
-  .l-container {
-    width: 1000px;
-    margin: auto;
-  }
+<link rel="stylesheet" type="text/css" href="style.css">
 
-  /* carousel */
-  .l-carousel {
-    position: relative;
-    width: 800px;
-    height: 200px;
-    margin: auto;
-  }
-  .l-carousel__inner {
-    overflow: hidden;
-    width: 800px;
-    height: 200px;
-  }
-  .l-carousel__arrows {
-  }
-  .l-carousel__arrow {
-    position: absolute;
-    top: 50%;
-    margin-top: -1em;
-    text-decoration: none;
-  }
-  .l-carousel__arrow--left {
-    left: -20px;
-  }
-  .l-carousel__arrow--right {
-    right: -20px;
-  }
-  .js-carousel__items{
-    position: relative;
-    width: 2000px;
-  }
-  .js-carousel__item{
-    float: left;
-    width: 800px;
-  }
-  .js-carousel__dots {
-    position: relative;
-    z-index: 10;
-    top: 10px;
-    text-align: center;
-  }
-  .js-carousel__dot {
-    display: inline-block;
-    margin: 0 10px;
-    text-align: center;
-    color: #b8c2d4;
-    font-size: 15px;
-    line-height: 15px;
-  }
-  .js-carousel__dot span {
-    cursor: pointer;
-  }
-  .js-carousel__dot.current {
-    color: #3e5783;
-  }
-</style>
-
-
+<div class="u-mgv--40">
   <div class="l-container">
-    <div class="l-mt--15 l-carousel js-carousel">
-      <div class="l-carousel__inner">
-        <div class="js-carousel__items">
-          <div class="js-carousel__item">
+    <p>1つのカルーセル</p>
+    <div class="carousel js-carousel">
+      <div class="carousel__inner">
+        <div class="carousel__items js-carousel__items">
+          <div class="carousel__item js-carousel__item">
               <img src="http://placehold.jp/800x200.png?text=bnr1" width="800" height="200" alt="">
           </div>
-          <div class="js-carousel__item">
+          <div class="carousel__item js-carousel__item">
               <img src="http://placehold.jp/800x200.png?text=bnr2" width="800" height="200" alt="">
           </div>
-          <div class="js-carousel__item">
+          <div class="carousel__item js-carousel__item">
               <img src="http://placehold.jp/800x200.png?text=bnr3" width="800" height="200" alt="">
           </div>
-          <div class="js-carousel__item">
+          <div class="carousel__item js-carousel__item">
               <img src="http://placehold.jp/800x200.png?text=bnr4" width="800" height="200" alt="">
           </div>
         </div>
       </div>
-      <div class="l-carousel__arrows">
-        <a href="#" class="l-carousel__arrow l-carousel__arrow--left js-carousel__arrow js-carousel__arrowPrev">＜</a>
-        <a href="#" class="l-carousel__arrow l-carousel__arrow--right js-carousel__arrow js-carousel__arrowNext">＞</a>
+      <div class="carousel__arrows">
+        <a href="#" class="carousel__arrow carousel__arrow--left js-carousel__arrow js-carousel__arrowPrev">＜</a>
+        <a href="#" class="carousel__arrow carousel__arrow--right js-carousel__arrow js-carousel__arrowNext">＞</a>
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="u-mgv--40">
+  <div class="l-carousel02">
+    <p>3つのカルーセル</p>
+    <div class="carousel02 js-carousel02">
+      <div class="carousel02__inner js-carousel__inner">
+        <ul class="carousel02__items js-carousel__items">
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100" alt="" />
+            </a>
+          </li>
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100?text=cts01" alt="" />
+            </a>
+          </li>
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100?text=cts02" alt="" />
+            </a>
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100?text=cts03" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="carousel02__arrows js-carousel__arrows">
+        <a href="#" class="carousel02__arrow carousel__arrow--left js-carousel__arrow js-carousel__arrowPrev carousel02__arrow--left">&lt;</a>
+        <a href="#" class="carousel02__arrow carousel__arrow--right js-carousel__arrow js-carousel__arrowNext carousel02__arrow--right">&gt;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="u-mgv--40">
+  <div class="l-carousel02">
+    <p>3つのカルーセルなんだけど要素が3つしかないから動かないやつ</p>
+    <div class="carousel02 js-carousel02">
+      <div class="carousel02__inner js-carousel__inner">
+        <ul class="carousel02__items js-carousel__items">
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100?text=cts01" alt="" />
+            </a>
+          </li>
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100?text=cts02" alt="" />
+            </a>
+          <li class="carousel02__item js-carousel__item">
+            <a href="#">
+              <img src="http://placehold.it/200x100?text=cts03" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="carousel02__arrows js-carousel__arrows">
+        <a href="#" class="carousel02__arrow carousel__arrow--left js-carousel__arrow js-carousel__arrowPrev carousel02__arrow--left">&lt;</a>
+        <a href="#" class="carousel02__arrow carousel__arrow--right js-carousel__arrow js-carousel__arrowNext carousel02__arrow--right">&gt;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>

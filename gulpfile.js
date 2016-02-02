@@ -18,6 +18,12 @@ g.task("connect", () => {
         .pipe($.open("", options));
 });
 
+g.task('css', ()=>{
+    g.src(['src/css/style.sass'])
+     .pipe($.sass())
+     .pipe(g.dest('./'));
+});
+
 g.task('babel', ()=>{
     g.src(['src/js/carousel.js'])
         .pipe($.babel({
@@ -33,17 +39,13 @@ g.task('lint', ()=>{
 });
 
 
-g.task('jscs', ()=>{
-    g.src(['modal.js', 'app.js'])
-        .pipe($.jscs());
-});
-
 g.task('dev', ['babel'], ()=>{
-    g.start(['lint', 'jscs']);
+    g.start(['lint']);
 });
 
 g.task("default", ['connect'], ()=>{
     g.watch("**/*.js", ["dev"]);
+    g.watch("src/**/*.sass", ["css"]);
 });
 
 
