@@ -1,15 +1,34 @@
 {
   "name": "antibase-carousel",
-  "version": "0.0.1",
-  "description": "",
-  "main": "carousel.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.1.0",
+  "description": "DOM carousel module",
   "author": "muyuu <anticyborg@gmail.com>",
-  "license": "MIT",
+  "license": {
+    "type": "MIT",
+    "url": "http://muyuu.mit-license.org/"
+  },
+  "main": "carousel.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muyuu/antibase-carousel"
+  },
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build",
+    "eslint": "eslint carousel.js"
+  },
+  "files": [
+    "README.md",
+    "index.html",
+    "style.css",
+    "app.js",
+    "carousel.js",
+    "carousel.min.js",
+    "carousel.min.js.map",
+    "src"
+  ],
   "dependencies": {
-    "jquery": "^1.11.3"
+    "jquery": "^1.12.0"
   },
   "devDependencies": {
     "antibase-css": "^0.1.1",
