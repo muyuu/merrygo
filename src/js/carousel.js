@@ -63,7 +63,11 @@
 
         // options
         this.opt = {
+            // prefix
             prefix: "js-",
+
+            // length
+            length : !isUndefined(opt.length) ? opt.length : 1,
 
             //elements
             inner: !isUndefined(opt.inner) ? opt.inner : ".js-carousel__inner",
@@ -101,7 +105,7 @@
 
         // elements
         this.$root = $(moduleRoot);
-        //this.$inner = this.$root.find(this.opt.inner);
+        this.$inner = this.$root.find(this.opt.inner);
         this.$items = this.$root.find(this.opt.items);
         this.$item = this.$root.find(this.opt.item);
         this.$dots = this.$root.find(this.opt.dots);
@@ -122,6 +126,14 @@
         this.isAnimate = false;
         this.isHover = false;
 
+
+        // not work when item length < this.opt.length
+        if (this.itemLength <= this.opt.length){
+            if (this.opt.useArrow) this.$arrow.hide();
+            return false
+        }
+
+
         // init
         this.setDom();
         this.setCss();
@@ -136,44 +148,40 @@
     }
 
     Module.prototype.setDom = function(){
-        var __ = this;
 
         // set items
-        __.setItems();
+        this.setItems();
 
         // set dots
-        if(__.opt.useDots) __.setDots();
+        if(this.opt.useDots) this.setDots();
     };
 
-    Module.prototype.setItems = function(e){
-        var __ = this;
+    Module.prototype.setItems = function(){
 
         for(var i = 0; i <= 1; i++){
-            __.$item.each(function(key, val){
-                __.$items.append($(val).clone(true, true));
+            this.$item.each((key, val)=>{
+                this.$items.append($(val).clone(true, true));
             });
         }
     };
 
     Module.prototype.setDots = function(e){
-        var __ = this;
 
-        var str = __.makeDotsDomStr();
-        __.$root.append(str);
-        __.$dots = __.$root.find(__.opt.dots);
-        __.$dot = __.$root.find(__.opt.dot);
+        var str = this.makeDotsDomStr();
+        this.$root.append(str);
+        this.$dots = this.$root.find(this.opt.dots);
+        this.$dot = this.$root.find(this.opt.dot);
     };
 
     Module.prototype.makeDotsDomStr = function(e){
-        var __ = this;
 
-        var itemLength = __.$item.length;
+        var itemLength = this.$item.length;
 
-        var domStr = "<ul class='" + putBothClasses(__.opt.dots, __.opt.prefix) + "'>";
+        var domStr = "<ul class='" + putBothClasses(this.opt.dots, this.opt.prefix) + "'>";
         for(var i=0; i<itemLength; i++){
-            domStr += "<li class='" + putBothClasses(__.opt.dot, __.opt.prefix) + "'>";
+            domStr += "<li class='" + putBothClasses(this.opt.dot, this.opt.prefix) + "'>";
             domStr += "<span>";
-            domStr += __.opt.dotContent;
+            domStr += this.opt.dotContent;
             domStr += "</span>";
             domStr += "</li>";
         }
@@ -193,90 +201,87 @@
     };
 
     Module.prototype.startTimerEvent = function(){
-        var __ = this;
 
         clearInterval(this.timer);
-        this.timer = setInterval(function(){
-            __.next();
-        }, __.opt.interval);
+
+        this.timer = setInterval(()=>{
+            this.next();
+        }, this.opt.interval);
     };
 
     Module.prototype.setClickEvent = function(){
-        var __ = this;
 
-        __.$arrow.on("click", function(){
+        this.$arrow.on("click", (e)=>{
 
-            if (__.isAnimate) return false;
+            if (this.isAnimate) return false;
 
-            __.isAnimate = true;
-            __.cancelTimerEvent();
+            this.isAnimate = true;
+            this.cancelTimerEvent();
 
-            if ($(this).hasClass(trimDot(__.opt.arrowNext))) __.next();
-            if ($(this).hasClass(trimDot(__.opt.arrowPrev))) __.prev();
+            if ($(e.currentTarget).hasClass(trimDot(this.opt.arrowNext))) this.next();
+            if ($(e.currentTarget).hasClass(trimDot(this.opt.arrowPrev))) this.prev();
 
             return false;
         });
 
-        __.$dot.on("click", function(){
-            if (__.isAnimate) return false;
+        this.$dot.on("click", (e)=>{
 
-            var index = __.$dot.index(this);
-            var moveLength = index - __.currentIndex
-            if (index === __.currentIndex) return false;
+            if (this.isAnimate) return false;
 
-            __.isAnimate = true;
-            __.cancelTimerEvent();
+            var index = this.$dot.index(e.currentTarget);
 
-            __.moveToIndex(index);
+            var moveLength = index - this.currentIndex
+            if (index === this.currentIndex) return false;
+
+            this.isAnimate = true;
+            this.cancelTimerEvent();
+
+            this.moveToIndex(index);
         });
     };
 
     Module.prototype.setHoverEvent = function(){
-        var __ = this;
 
-        __.$root.find(__.opt.item).hover(
-            function(){
-                __.isHover = true;
-                if (!__.isAnimate) {
-                    __.cancelTimerEvent();
+        this.$root.find(this.opt.item).hover(
+            ()=>{
+                this.isHover = true;
+                if (!this.isAnimate) {
+                    this.isAnimate = false;
+                    this.cancelTimerEvent();
                 }
             },
-            function(){
-                __.isHover = false;
-                if (!__.isAnimate) {
-                    __.startTimerEvent();
-                    __.isAnimate = false;
+            ()=>{
+                this.isHover = false;
+                if (!this.isAnimate) {
+                    this.startTimerEvent();
                 }
             }
         );
     };
 
     Module.prototype.setResizeEvent = function(){
-        var __ = this;
 
-        $(window).on("resize", function(){
-            __.resizeHandler();
+        $(window).on("resize", ()=>{
+            this.resizeHandler();
         });
     };
 
     Module.prototype.resizeHandler = function() {
-        var self = this;
 
-        if (self.resizeTimer !== false) clearTimeout(self.resizeTimer);
+        if (this.resizeTimer !== false) clearTimeout(this.resizeTimer);
 
-        self.resizeTimer = setTimeout(function() {
-            self.reset();
+        this.resizeTimer = setTimeout(()=>{
+            this.reset();
         }, 200);
     };
 
     Module.prototype.reset = function() {
-        var __ = this;
 
-        __.cancelTimerEvent();
-        __.singleItemWidth = $(this.rootclass).outerWidth(true);
-        __.setCss();
+        this.cancelTimerEvent();
+        this.singleItemWidth = $(this.rootclass).outerWidth(true);
+        this.setCss();
 
-        __.startTimerEvent();
+        this.startTimerEvent();
     };
 
     Module.prototype.moveToIndex = function(index){
@@ -293,12 +298,11 @@
     };
 
     Module.prototype.move = function(type){
-        var __ = this;
 
-        var tmpIndex = __.currentIndex;
+        var tmpIndex = this.currentIndex;
         var moveLength;
 
-        var leftCssVal = -(__.singleItemWidth * __.itemLength);
+        var leftCssVal = -(this.singleItemWidth * this.itemLength);
 
         switch(type){
             case 'next':
@@ -313,97 +317,91 @@
                 moveLength = type - tmpIndex;
         }
 
-        leftCssVal -= moveLength * __.singleItemWidth;
+        leftCssVal -= moveLength * this.singleItemWidth;
 
         // index
-        __.pushCurrentClass(type);
+        this.pushCurrentClass(type);
 
-        __.$items.animate(
+        this.isAnimate = true;
+
+        this.$items.animate(
             {
                 left: leftCssVal
             },
-            __.opt.duration,
-            function(){
-                __.arrowCallback(type, moveLength);
+            this.opt.duration,
+            ()=>{
+                this.arrowCallback(type, moveLength);
 
-                if (!__.isHover) {
-                    __.startTimerEvent();
-                    __.isAnimate = false;
-                }
+                this.startTimerEvent();
+                this.isAnimate = false;
             }
         );
-        return __;
+        return this;
     };
 
     Module.prototype.pushCurrentClass = function(type){
-        var __ = this;
 
-
-        __.changeIndex(type);
-        var index = __.currentIndex;
-        var current = __.opt.currentClass;
+        this.changeIndex(type);
+        var index = this.currentIndex;
+        var current = this.opt.currentClass;
 
         //dots
-        __.$dot.removeClass(current);
-        __.$dot.eq(index).addClass(current);
+        this.$dot.removeClass(current);
+        this.$dot.eq(index).addClass(current);
 
-        return __;
+        return this;
     };
 
     Module.prototype.changeIndex = function(type){
-        var __ = this;
 
-        if (type === 'next') __.currentIndex++;
-        if (type === 'prev') __.currentIndex--;
-        if (typeof type === 'number') __.currentIndex = type;
+        if (type === 'next') this.currentIndex++;
+        if (type === 'prev') this.currentIndex--;
+        if (typeof type === 'number') this.currentIndex = type;
 
-        __.roundIndex();
+        this.roundIndex();
 
-        return __;
+        return this;
     };
 
     Module.prototype.roundIndex = function(){
-        var __ = this;
 
-        if (__.isValidIndex()) return __.currentIndex;
-        if (__.currentIndex < 0) return __.currentIndex = __.itemLength - 1;
-        return __.currentIndex = 0;
+        if (this.isValidIndex()) return this.currentIndex;
+        if (this.currentIndex < 0) return this.currentIndex = this.itemLength - 1;
+        return this.currentIndex = 0;
 
-        return __;
+        return this;
     };
 
     Module.prototype.isValidIndex = function(){
-        var __ = this;
-        return 0 <= __.currentIndex && __.currentIndex + 1 <= __.itemLength;
+        return 0 <= this.currentIndex && this.currentIndex + 1 <= this.itemLength;
     };
 
     Module.prototype.arrowCallback = function(type, moveLength){
-        var __ = this;
 
-        var currentItem = __.$items.find(__.opt.item);
+        var currentItem = this.$items.find(this.opt.item);
 
         //item move
-        if (type === 'next') __.$items.append(currentItem.first());
-        if (type === 'prev') __.$items.prepend(currentItem.last());
+        if (type === 'next') this.$items.append(currentItem.first());
+        if (type === 'prev') this.$items.prepend(currentItem.last());
 
         if (typeof type === 'number') {
             var abs = Math.abs(moveLength);
 
             for (var i = 0; i < abs; i++) {
                 if(moveLength > 0) {
-                    __.$items.append(__.$items.find(__.opt.item).first());
+                    this.$items.append(this.$items.find(this.opt.item).first());
                 } else {
-                    __.$items.prepend(__.$items.find(__.opt.item).last());
+                    this.$items.prepend(this.$items.find(this.opt.item).last());
                 }
             }
         }
 
         //css reset
-        __.$items.css({
-            left: -(__.singleItemWidth * __.itemLength)
+        this.$items.css({
+            left: -(this.singleItemWidth * this.itemLength)
         });
 
-        return __;
+        return this;
     };
 
     return factory;
