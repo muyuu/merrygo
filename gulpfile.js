@@ -54,7 +54,7 @@ g.task('build', ()=>{
     g.src('./carousel.js')
         .pipe($.sourcemaps.init())
         .pipe($.rename({
-            basename: "modal.min",
+            basename: "carousel.min",
             extname: ".js"
         }))
         .pipe($.uglify())
