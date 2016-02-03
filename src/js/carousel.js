@@ -61,6 +61,8 @@
      */
     function Module(opt, moduleRoot){
 
+        this.rootclass = moduleRoot;
+
         // options
         this.opt = {
             // prefix
@@ -136,6 +138,7 @@
 
         // init
         this.setDom();
+        this.reset();
         this.setCss();
         this.pushCurrentClass();
 
@@ -173,7 +176,7 @@
         this.$dot = this.$root.find(this.opt.dot);
     };
 
-    Module.prototype.makeDotsDomStr = function(e){
+    Module.prototype.makeDotsDomStr = function(){
 
         var itemLength = this.$item.length;
 
@@ -189,10 +192,13 @@
         return domStr;
     };
 
-    Module.prototype.setCss = function(e){
+    Module.prototype.setCss = function(){
         this.$items.css({
             width: this.singleItemWidth * this.itemLength * 3,
             left : -(this.singleItemWidth * this.itemLength)
+        });
+        this.$root.find(this.opt.item).css({
+            width: this.singleItemWidth
         });
     };
 
@@ -278,7 +284,7 @@
     Module.prototype.reset = function() {
 
         this.cancelTimerEvent();
-        this.singleItemWidth = $(this.rootclass).outerWidth(true);
+        this.singleItemWidth = $(this.rootclass).innerWidth() / this.opt.length;
         this.setCss();
 
         this.startTimerEvent();

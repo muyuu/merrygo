@@ -9,33 +9,31 @@ g.task("connect", () => {
         livereload: true
     });
 
-    options = {
+    g.src("./index.html")
+    .pipe($.open({
         url: "http://localhost:3000",
         app: "Google Chrome"
-    };
-
-    g.src("./index.html")
-        .pipe($.open("", options));
+    }));
 });
 
 g.task('css', ()=>{
     g.src(['src/css/style.sass'])
-     .pipe($.sass())
-     .pipe(g.dest('./'));
+    .pipe($.sass())
+    .pipe(g.dest('./'));
 });
 
 g.task('babel', ()=>{
     g.src(['src/js/carousel.js'])
-        .pipe($.babel({
-            presets: ['es2015']
-        }))
-        .pipe(g.dest('./'));
+    .pipe($.babel({
+        presets: ['es2015']
+    }))
+    .pipe(g.dest('./'));
 });
 
 g.task('lint', ()=>{
     g.src(['carousel.js', 'app.js'])
-        .pipe($.eslint())
-        .pipe($.eslint.format());
+    .pipe($.eslint())
+    .pipe($.eslint.format());
 });
 
 
@@ -52,14 +50,14 @@ g.task("default", ['connect'], ()=>{
  //build
 g.task('build', ()=>{
     g.src('./carousel.js')
-        .pipe($.sourcemaps.init())
-        .pipe($.rename({
-            basename: "carousel.min",
-            extname: ".js"
-        }))
-        .pipe($.uglify())
-        .pipe($.sourcemaps.write('./'))
-        .pipe(g.dest('./'));
+    .pipe($.sourcemaps.init())
+    .pipe($.rename({
+        basename: "carousel.min",
+        extname: ".js"
+    }))
+    .pipe($.uglify())
+    .pipe($.sourcemaps.write('./'))
+    .pipe(g.dest('./'));
 });
 
 
