@@ -71,6 +71,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     function Module(opt, moduleRoot) {
 
+        this.rootclass = moduleRoot;
+
         // options
         this.opt = {
             // prefix
@@ -144,6 +146,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         // init
         this.setDom();
+        this.reset();
         this.setCss();
         this.pushCurrentClass();
 
@@ -181,7 +184,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.$dot = this.$root.find(this.opt.dot);
     };
 
-    Module.prototype.makeDotsDomStr = function (e) {
+    Module.prototype.makeDotsDomStr = function () {
 
         var itemLength = this.$item.length;
 
@@ -197,10 +200,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return domStr;
     };
 
-    Module.prototype.setCss = function (e) {
+    Module.prototype.setCss = function () {
         this.$items.css({
             width: this.singleItemWidth * this.itemLength * 3,
             left: -(this.singleItemWidth * this.itemLength)
+        });
+        this.$root.find(this.opt.item).css({
+            width: this.singleItemWidth
         });
     };
 
@@ -288,7 +294,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     Module.prototype.reset = function () {
 
         this.cancelTimerEvent();
-        this.singleItemWidth = $(this.rootclass).outerWidth(true);
+        this.singleItemWidth = $(this.rootclass).innerWidth() / this.opt.length;
         this.setCss();
 
         this.startTimerEvent();

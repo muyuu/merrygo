@@ -917,11 +917,24 @@ select {
     .carousel__arrow--right {
       right: -20px; }
   .carousel__item {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     float: left;
     width: 800px; }
     .carousel__items {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
       position: relative;
       width: 2000px; }
+      .carousel__items:before, .carousel__items:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden; }
+      .carousel__items:after {
+        clear: both; }
   .carousel__dot {
     display: inline-block;
     margin: 0 10px;
@@ -955,12 +968,25 @@ select {
       .carousel02 .carousel02__arrow--right {
         right: -20px; }
     .carousel02 .carousel02__item {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
       float: left;
       width: 200px;
       padding: 10px; }
       .carousel02 .carousel02__items {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
         position: relative;
         width: 2000px; }
+        .carousel02 .carousel02__items:before, .carousel02 .carousel02__items:after {
+          content: "\0020";
+          display: block;
+          height: 0;
+          overflow: hidden; }
+        .carousel02 .carousel02__items:after {
+          clear: both; }
     .carousel02__dot {
       display: inline-block;
       margin: 0 10px;
