@@ -81,6 +81,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             // length
             length: !isUndefined(opt.length) ? opt.length : 1,
 
+            force: !isUndefined(opt.force) ? opt.force : false,
+
             //elements
             inner: !isUndefined(opt.inner) ? opt.inner : ".js-carousel__inner",
             items: !isUndefined(opt.items) ? opt.items : ".js-carousel__items",
@@ -139,7 +141,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.isHover = false;
 
         // not work when item length < this.opt.length
-        if (this.itemLength <= this.opt.length) {
+        if (!this.isRun()) {
             if (this.opt.useArrow) this.$arrow.hide();
             return false;
         }
@@ -156,6 +158,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.setHoverEvent();
         this.setResizeEvent();
     }
+
+    Module.prototype.isRun = function () {
+        return this.itemLength > this.opt.length || this.opt.force;
+    };
 
     Module.prototype.setDom = function () {
 
