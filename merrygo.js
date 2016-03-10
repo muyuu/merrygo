@@ -111,6 +111,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             interval: !isUndefined(opt.interval) ? opt.interval : 3000,
 
             // callback
+            onLoad: opt.onLoad || null,
             onOpen: opt.onOpen || null,
             onClose: opt.onClose || null,
             onClick: opt.onClick || null,
@@ -147,10 +148,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         // init
-        this.setDom();
-        this.reset();
-        this.setCss();
-        this.pushCurrentClass();
+        this.init();
 
         // set event
         this.startTimerEvent();
@@ -158,6 +156,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.setHoverEvent();
         this.setResizeEvent();
     }
+
+    Module.prototype.init = function () {
+        this.setDom();
+        this.reset();
+        this.setCss();
+        this.pushCurrentClass();
+
+        if( typeof this.opt.onLoad === 'function' ){
+            this.opt.onLoad(this.$root);
+        }
+    };
+
 
     Module.prototype.isRun = function () {
         return this.itemLength > this.opt.length || this.opt.force;

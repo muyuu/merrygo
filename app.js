@@ -10,7 +10,11 @@
         duration: 600,
         interval: 3000,
         length: 3,
-        itemMargin: 10
+        itemMargin: 10,
+        onLoad: function($ele){
+            console.log("on load");
+            console.log($ele);
+        }
     });
 
     merrygo({
