@@ -9,7 +9,8 @@
         root: ".js-merrygo02",
         duration: 600,
         interval: 3000,
-        length: 3
+        length: 3,
+        itemMargin: 10
     });
 
     merrygo({
@@ -17,6 +18,7 @@
         duration: 600,
         interval: 3000,
         length: 3,
+        itemMargin: 10,
         force: true,
         useDots: false
     });

@@ -212,7 +212,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             left: -(this.singleItemWidth * this.itemLength)
         });
         this.$root.find(this.opt.item).css({
-            width: this.singleItemWidth
+            width: this.singleItemWidth,
+            "padding-left": this.opt.itemMargin / 2,
+            "padding-right": this.opt.itemMargin / 2
         });
     };
 
