@@ -1,13 +1,13 @@
 .merrygo
     position: relative
-    width: 800px
-    height: 200px
+    width: 100%
+    height: auto
     margin: auto
 
     &__inner
         overflow: hidden
-        width: 800px
-        height: 200px
+        width: 100%
+        height: auto
 
     &__arrow
         position: absolute
@@ -34,7 +34,6 @@
         -moz-box-sizing: border-box
         box-sizing: border-box
         float: left
-        width: 800px
 
 
     &__dot
@@ -58,75 +57,4 @@
 
         &.current
             color: #3e5783
-
-
-    &02
-        $t: &
-
-        position: relative
-        width: 600px
-        margin: auto
-
-        #{$t}__inner
-            overflow: hidden
-            width: 600px
-
-        #{$t}__arrow
-            position: absolute
-            top: 50%
-            margin-top: -1em
-            text-decoration: none
-
-            &--left
-                left: -20px
-
-            &--right
-                right: -20px
-
-        #{$t}__item
-            &s
-                -webkit-box-sizing: border-box
-                -moz-box-sizing: border-box
-                box-sizing: border-box
-                +clrfx
-                position: relative
-                width: 2000px
-
-            -webkit-box-sizing: border-box
-            -moz-box-sizing: border-box
-            box-sizing: border-box
-            float: left
-            width: 200px
-            padding: 10px
-
-
-        &__dot
-            &s
-                position: relative
-                z-index: 10
-                top: 0
-                text-align: center
-
-            display: inline-block
-            margin: 0 10px
-            text-align: center
-            color: #b8c2d4
-            font-size: 15px
-            line-height: 15px
-
-
-            span
-                cursor: pointer
-
-
-            &.current
-                color: #3e5783
-
-
-
-
-
-
-
-
 

@@ -838,6 +838,12 @@ ol {
   margin-right: auto;
   padding: 0 10px 40px;
   background: #f0f0f0; }
+  @media (max-width: 999px) {
+    .l-container {
+      width: 100%; } }
+
+.merrygo__item img {
+  width: 100%; }
 
 .l-merrygo02 {
   width: 1000px;
@@ -845,16 +851,19 @@ ol {
   margin-right: auto;
   padding: 0 10px 20px;
   background: #f0f0f0; }
+  @media (max-width: 999px) {
+    .l-merrygo02 {
+      width: 100%; } }
 
 .merrygo {
   position: relative;
-  width: 800px;
-  height: 200px;
+  width: 100%;
+  height: auto;
   margin: auto; }
   .merrygo__inner {
     overflow: hidden;
-    width: 800px;
-    height: 200px; }
+    width: 100%;
+    height: auto; }
   .merrygo__arrow {
     position: absolute;
     top: 50%;
@@ -868,8 +877,7 @@ ol {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    float: left;
-    width: 800px; }
+    float: left; }
     .merrygo__items {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -899,55 +907,3 @@ ol {
       cursor: pointer; }
     .merrygo__dot.current {
       color: #3e5783; }
-  .merrygo02 {
-    position: relative;
-    width: 600px;
-    margin: auto; }
-    .merrygo02 .merrygo02__inner {
-      overflow: hidden;
-      width: 600px; }
-    .merrygo02 .merrygo02__arrow {
-      position: absolute;
-      top: 50%;
-      margin-top: -1em;
-      text-decoration: none; }
-      .merrygo02 .merrygo02__arrow--left {
-        left: -20px; }
-      .merrygo02 .merrygo02__arrow--right {
-        right: -20px; }
-    .merrygo02 .merrygo02__item {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      float: left;
-      width: 200px;
-      padding: 10px; }
-      .merrygo02 .merrygo02__items {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        position: relative;
-        width: 2000px; }
-        .merrygo02 .merrygo02__items:before, .merrygo02 .merrygo02__items:after {
-          content: "\0020";
-          display: block;
-          height: 0;
-          overflow: hidden; }
-        .merrygo02 .merrygo02__items:after {
-          clear: both; }
-    .merrygo02__dot {
-      display: inline-block;
-      margin: 0 10px;
-      text-align: center;
-      color: #b8c2d4;
-      font-size: 15px;
-      line-height: 15px; }
-      .merrygo02__dots {
-        position: relative;
-        z-index: 10;
-        top: 0;
-        text-align: center; }
-      .merrygo02__dot span {
-        cursor: pointer; }
-      .merrygo02__dot.current {
-        color: #3e5783; }
