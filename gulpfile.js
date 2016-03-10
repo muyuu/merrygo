@@ -2,7 +2,7 @@ const g = require("gulp");
 const $ = require( 'gulp-load-plugins' )();
 const connect = require('gulp-connect');
 
-const port = 3000;
+const port = 4000;
 
 filename = "merrygo";
 file = `${filename}.js`;
