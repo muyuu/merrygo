@@ -99,17 +99,11 @@ pre, code, kbd, samp, tt {
   *font-size: 108%;
   line-height: 100%; }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 16px; }
-
 body {
   background: #fff;
   color: #000;
   line-height: 1.6;
+  font-size: 16px;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
 
 *,
@@ -119,33 +113,10 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-a, a:visited {
-  color: #000;
-  text-decoration: none; }
-  a:hover, a:focus, a:active, a:visited:hover, a:visited:focus, a:visited:active {
-    color: #000; }
-
 img {
   vertical-align: bottom;
   max-width: 100%;
   max-height: 100%; }
-
-strong {
-  font-weight: bold; }
-
-p {
-  margin: 10px 0 0; }
-
-blockquote {
-  padding: 5px 1em;
-  border-left: 4px solid #efefef; }
-  blockquote > *:first-child {
-    margin-top: 0; }
-
-pre {
-  padding: 0.4em;
-  background: #f9f9f9;
-  color: #644; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
@@ -190,29 +161,6 @@ ol {
       padding-right: 6px;
       margin-left: -20px; }
 
-input, textarea {
-  box-sizing: border-box; }
-
-input[type=text],
-input[type=password],
-input[type=tel],
-input[type=email],
-input[type=number] {
-  padding: 3px;
-  border: 1px solid #999;
-  box-shadow: none; }
-
-input[type=checkbox] {
-  margin-right: 10px; }
-
-select {
-  width: 100%;
-  padding: 0;
-  border-radius: 0;
-  height: 1.6em;
-  border: 1px solid #999999;
-  font-size: .8em; }
-
 .u-align--left {
   text-align: left;
   margin-right: auto; }
@@ -240,13 +188,13 @@ select {
   display: none !important; }
   @media (max-width: 639px) {
     .u-only--sp {
-      display: inherit !important; } }
+      display: initial !important; } }
 
 .u-not--pc {
   display: none !important; }
   @media (max-width: 999px) {
     .u-not--pc {
-      display: inherit !important; } }
+      display: initial !important; } }
 
 @media (max-width: 639px) {
   .u-not--sp {
@@ -875,13 +823,13 @@ select {
 .l-twoCol {
   overflow: hidden; }
   .l-twoCol__fluid {
-    overflow: hidden;
-    margin-left: 0; }
+    overflow: hidden; }
   .l-twoCol__fixed {
     float: left;
     margin-right: 10px; }
     .l-twoCol__fixed--right {
       float: right;
+      margin-right: 0;
       margin-left: 10px; }
 
 .l-container {
@@ -891,115 +839,115 @@ select {
   padding: 0 10px 40px;
   background: #f0f0f0; }
 
-.l-carousel02 {
+.l-merrygo02 {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px 20px;
   background: #f0f0f0; }
 
-.carousel {
+.merrygo {
   position: relative;
   width: 800px;
   height: 200px;
   margin: auto; }
-  .carousel__inner {
+  .merrygo__inner {
     overflow: hidden;
     width: 800px;
     height: 200px; }
-  .carousel__arrow {
+  .merrygo__arrow {
     position: absolute;
     top: 50%;
     margin-top: -1em;
     text-decoration: none; }
-    .carousel__arrow--left {
+    .merrygo__arrow--left {
       left: -20px; }
-    .carousel__arrow--right {
+    .merrygo__arrow--right {
       right: -20px; }
-  .carousel__item {
+  .merrygo__item {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     float: left;
     width: 800px; }
-    .carousel__items {
+    .merrygo__items {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       position: relative;
       width: 2000px; }
-      .carousel__items:before, .carousel__items:after {
+      .merrygo__items:before, .merrygo__items:after {
         content: "\0020";
         display: block;
         height: 0;
         overflow: hidden; }
-      .carousel__items:after {
+      .merrygo__items:after {
         clear: both; }
-  .carousel__dot {
+  .merrygo__dot {
     display: inline-block;
     margin: 0 10px;
     text-align: center;
     color: #b8c2d4;
     font-size: 15px;
     line-height: 15px; }
-    .carousel__dots {
+    .merrygo__dots {
       position: relative;
       z-index: 10;
       top: 10px;
       text-align: center; }
-    .carousel__dot span {
+    .merrygo__dot span {
       cursor: pointer; }
-    .carousel__dot.current {
+    .merrygo__dot.current {
       color: #3e5783; }
-  .carousel02 {
+  .merrygo02 {
     position: relative;
     width: 600px;
     margin: auto; }
-    .carousel02 .carousel02__inner {
+    .merrygo02 .merrygo02__inner {
       overflow: hidden;
       width: 600px; }
-    .carousel02 .carousel02__arrow {
+    .merrygo02 .merrygo02__arrow {
       position: absolute;
       top: 50%;
       margin-top: -1em;
       text-decoration: none; }
-      .carousel02 .carousel02__arrow--left {
+      .merrygo02 .merrygo02__arrow--left {
         left: -20px; }
-      .carousel02 .carousel02__arrow--right {
+      .merrygo02 .merrygo02__arrow--right {
         right: -20px; }
-    .carousel02 .carousel02__item {
+    .merrygo02 .merrygo02__item {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       float: left;
       width: 200px;
       padding: 10px; }
-      .carousel02 .carousel02__items {
+      .merrygo02 .merrygo02__items {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         position: relative;
         width: 2000px; }
-        .carousel02 .carousel02__items:before, .carousel02 .carousel02__items:after {
+        .merrygo02 .merrygo02__items:before, .merrygo02 .merrygo02__items:after {
           content: "\0020";
           display: block;
           height: 0;
           overflow: hidden; }
-        .carousel02 .carousel02__items:after {
+        .merrygo02 .merrygo02__items:after {
           clear: both; }
-    .carousel02__dot {
+    .merrygo02__dot {
       display: inline-block;
       margin: 0 10px;
       text-align: center;
       color: #b8c2d4;
       font-size: 15px;
       line-height: 15px; }
-      .carousel02__dots {
+      .merrygo02__dots {
         position: relative;
         z-index: 10;
         top: 0;
         text-align: center; }
-      .carousel02__dot span {
+      .merrygo02__dot span {
         cursor: pointer; }
-      .carousel02__dot.current {
+      .merrygo02__dot.current {
         color: #3e5783; }

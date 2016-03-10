@@ -1,37 +1,36 @@
 {
-  "name": "antibase-carousel",
-  "version": "0.1.3",
+  "name": "merrygo",
+  "version": "1.0.0",
   "description": "DOM carousel module",
   "author": "muyuu <anticyborg@gmail.com>",
   "license": {
     "type": "MIT",
     "url": "http://muyuu.mit-license.org/"
   },
-  "main": "carousel.js",
+  "main": "merrygo.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/muyuu/antibase-carousel"
+    "url": "https://github.com/muyuu/merrygo"
   },
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
-    "eslint": "eslint carousel.js"
+    "eslint": "eslint merrygo.js"
   },
   "files": [
     "README.md",
     "index.html",
     "style.css",
     "app.js",
-    "carousel.js",
-    "carousel.min.js",
-    "carousel.min.js.map",
+    "merrygo.js",
+    "merrygo.min.js",
+    "merrygo.min.js.map",
     "src"
   ],
   "dependencies": {
-    "jquery": "^1.12.0"
+    "jquery": "^1.12.1"
   },
   "devDependencies": {
-    "antibase-css": "^0.1.1",
     "babel-preset-es2015": "^6.3.13",
     "eslint": "^1.10.3",
     "gulp": "^3.9.0",
@@ -45,6 +44,6 @@
     "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
-    "jquery": "^1.12.0"
+    "standby.css": "^0.2.0"
   }
 }

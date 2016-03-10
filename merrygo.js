@@ -5,7 +5,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 (function (definition) {
     "use strict";
 
-    var moduleName = "uiCarousel";
+    var moduleName = "merrygo";
 
     var root = (typeof self === "undefined" ? "undefined" : _typeof(self)) === "object" && self.self === self && self || (typeof global === "undefined" ? "undefined" : _typeof(global)) === "object" && global.global === global && global;
 
@@ -50,12 +50,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
      */
     function factory(param) {
 
-        var rootElement = ".js-carousel";
+        var rootElement = ".js-merrygo";
         var opt = !isUndefined(param) ? param : {};
 
         var $list;
         if (isUndefined(opt.root)) $list = $(rootElement);
-        if (!isUndefined(opt.root)) $list = opt.root instanceof jQuery ? param.root : $(param.root);
+        if (!isUndefined(opt.root)) $list = opt.root instanceof $ ? param.root : $(param.root);
 
         var length = $list.length;
         var mappedlist = [];
@@ -84,23 +84,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             force: !isUndefined(opt.force) ? opt.force : false,
 
             //elements
-            inner: !isUndefined(opt.inner) ? opt.inner : ".js-carousel__inner",
-            items: !isUndefined(opt.items) ? opt.items : ".js-carousel__items",
-            item: !isUndefined(opt.item) ? opt.item : ".js-carousel__item",
+            inner: !isUndefined(opt.inner) ? opt.inner : ".js-merrygo__inner",
+            items: !isUndefined(opt.items) ? opt.items : ".js-merrygo__items",
+            item: !isUndefined(opt.item) ? opt.item : ".js-merrygo__item",
 
             //arrow
             useArrow: !isUndefined(opt.useArrow) ? opt.useArrow : true,
-            arrow: !isUndefined(opt.arrow) ? opt.arrow : ".js-carousel__arrow",
-            arrowPrev: !isUndefined(opt.arrowPrev) ? opt.arrowPrev : ".js-carousel__arrowPrev",
-            arrowNext: !isUndefined(opt.arrowNext) ? opt.arrowNext : ".js-carousel__arrowNext",
+            arrow: !isUndefined(opt.arrow) ? opt.arrow : ".js-merrygo__arrow",
+            arrowPrev: !isUndefined(opt.arrowPrev) ? opt.arrowPrev : ".js-merrygo__arrowPrev",
+            arrowNext: !isUndefined(opt.arrowNext) ? opt.arrowNext : ".js-merrygo__arrowNext",
 
             //margin
             itemMargin: !isUndefined(opt.itemMargin) ? opt.itemMargin : 0,
 
             //dots
             useDots: !isUndefined(opt.useDots) ? opt.useDots : true,
-            dots: !isUndefined(opt.dots) ? opt.dots : ".js-carousel__dots",
-            dot: !isUndefined(opt.dot) ? opt.dot : ".js-carousel__dot",
+            dots: !isUndefined(opt.dots) ? opt.dots : ".js-merrygo__dots",
+            dot: !isUndefined(opt.dot) ? opt.dot : ".js-merrygo__dot",
             dotContent: !isUndefined(opt.dotContent) ? opt.dotContent : "○",
 
             //state

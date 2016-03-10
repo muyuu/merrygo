@@ -1,19 +1,19 @@
 (function(w, $){
   $(function(){
-    uiCarousel({
+    merrygo({
       duration: 500,
       interval: 5000
     });
 
-    uiCarousel({
-        root: ".js-carousel02",
+    merrygo({
+        root: ".js-merrygo02",
         duration: 600,
         interval: 3000,
         length: 3
     });
 
-    uiCarousel({
-        root: ".js-carousel03",
+    merrygo({
+        root: ".js-merrygo03",
         duration: 600,
         interval: 3000,
         length: 3,
