@@ -3,20 +3,20 @@
 this code is javascript carousel library for browser(contain ie8).
 
 ## dependences
-- jquery@1.12.0
+- jquery@1.12.1
 
 ## install
-npm install --save-dev antibase-carousel
+npm install --save-dev merrygo
 
 ## usage
 
 ### browserify
 ```
-var carousel = require('carousel');
+var merrygo = require('merrygo');
 
-var carousel01 carousel({root: "js-carouselpattern01"});
+var carousel01 merrygo({root: "js-carouselpattern01"});
 
-var carousel02 carousel({
+var carousel02 merrygo({
     root: "js-carouselpattern02",
     duration: 600,
     interval: 3000,
@@ -27,11 +27,11 @@ var carousel02 carousel({
 ### other
 ```
 <script src="jquery.js"></script>
-<script src="carousel.js"></script>
+<script src="merrygo.js"></script>
 <script src="app.js"></script> // module load
 
 # app.js
-var carousel01 = uiCarousel();
+var carousel01 = merrygo();
 ```
 
 
