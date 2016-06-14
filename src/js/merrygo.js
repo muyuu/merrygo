@@ -18,11 +18,8 @@
     // utility functions
     // -------------------------------------------------------
     const isUndefined = (obj)=>{ return obj === void 0; };
-
     const trimDot = (string)=>{ return string.replace(".", ""); };
-
     const trimSome = (string, some)=>{ return string.replace(some, ""); };
-
     const putBothClasses = (string, prefix)=>{ return trimDot(string) + " " + trimSome(trimDot(string), prefix); };
 
 
@@ -134,7 +131,7 @@
         // not work when item length < this.opt.length
         if ( !this.isRun() ){
             if (this.opt.useArrow) this.$arrow.hide();
-            return false
+            return false;
         }
 
 
@@ -152,9 +149,11 @@
         this.setResizeEvent();
     }
 
+
     Module.prototype.isRun = function(){
         return this.itemLength > this.opt.length || this.opt.force;
-    }
+    };
+
 
     Module.prototype.setDom = function(){
 
@@ -165,6 +164,7 @@
         if(this.opt.useDots) this.setDots();
     };
 
+
     Module.prototype.setItems = function(){
 
         for(var i = 0; i <= 1; i++){
@@ -174,6 +174,7 @@
         }
     };
 
+
     Module.prototype.setDots = function(e){
 
         var str = this.makeDotsDomStr();
@@ -181,6 +182,7 @@
         this.$dots = this.$root.find(this.opt.dots);
         this.$dot = this.$root.find(this.opt.dot);
     };
+
 
     Module.prototype.makeDotsDomStr = function(){
 
@@ -198,6 +200,7 @@
         return domStr;
     };
 
+
     Module.prototype.setCss = function(){
         this.$items.css({
             width: this.singleItemWidth * this.itemLength * 3,
@@ -210,9 +213,11 @@
         });
     };
 
+
     Module.prototype.cancelTimerEvent = function(){
         clearInterval(this.timer);
     };
+
 
     Module.prototype.startTimerEvent = function(){
 
@@ -222,6 +227,7 @@
             this.next();
         }, this.opt.interval);
     };
+
 
     Module.prototype.setClickEvent = function(){
 
@@ -244,7 +250,7 @@
 
             var index = this.$dot.index(e.currentTarget);
 
-            var moveLength = index - this.currentIndex
+            var moveLength = index - this.currentIndex;
             if (index === this.currentIndex) return false;
 
             this.isAnimate = true;
@@ -253,6 +259,7 @@
             this.moveToIndex(index);
         });
     };
+
 
     Module.prototype.setHoverEvent = function(){
 
@@ -273,12 +280,14 @@
         );
     };
 
+
     Module.prototype.setResizeEvent = function(){
 
         $(window).on("resize", ()=>{
             this.resizeHandler();
         });
     };
+
 
     Module.prototype.resizeHandler = function() {
 
@@ -289,6 +298,7 @@
         }, 200);
     };
 
+
     Module.prototype.reset = function() {
 
         this.cancelTimerEvent();
@@ -298,18 +308,22 @@
         this.startTimerEvent();
     };
 
+
     Module.prototype.moveToIndex = function(index){
         if(typeof index !== 'number') return false;
         return this.move(index);
     };
 
+
     Module.prototype.next = function(){
         return this.move('next');
     };
 
+
     Module.prototype.prev = function(){
         return this.move('prev');
     };
+
 
     Module.prototype.move = function(type){
 
@@ -353,6 +367,7 @@
         return this;
     };
 
+
     Module.prototype.pushCurrentClass = function(type){
 
         this.changeIndex(type);
@@ -366,6 +381,7 @@
         return this;
     };
 
+
     Module.prototype.changeIndex = function(type){
 
         if (type === 'next') this.currentIndex++;
@@ -377,18 +393,27 @@
         return this;
     };
 
+
     Module.prototype.roundIndex = function(){
 
-        if (this.isValidIndex()) return this.currentIndex;
-        if (this.currentIndex < 0) return this.currentIndex = this.itemLength - 1;
-        return this.currentIndex = 0;
+        if (this.isValidIndex()){
+            this.currentIndex;
+        }
+
+        if (this.currentIndex < 0){
+            this.currentIndex = this.itemLength - 1;
+        }
+
+        this.currentIndex = 0;
 
         return this;
     };
 
+
     Module.prototype.isValidIndex = function(){
         return 0 <= this.currentIndex && this.currentIndex + 1 <= this.itemLength;
     };
+
 
     Module.prototype.arrowCallback = function(type, moveLength){
 
