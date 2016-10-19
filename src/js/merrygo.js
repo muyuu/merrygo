@@ -231,33 +231,37 @@
 
     Module.prototype.setClickEvent = function(){
 
-        this.$arrow.on("click", (e)=>{
+        if(this.opt.useArrow){
+            this.$arrow.on("click", (e)=>{
 
-            if (this.isAnimate) return false;
+                if (this.isAnimate) return false;
 
-            this.isAnimate = true;
-            this.cancelTimerEvent();
+                this.isAnimate = true;
+                this.cancelTimerEvent();
 
-            if ($(e.currentTarget).hasClass(trimDot(this.opt.arrowNext))) this.next();
-            if ($(e.currentTarget).hasClass(trimDot(this.opt.arrowPrev))) this.prev();
+                if ($(e.currentTarget).hasClass(trimDot(this.opt.arrowNext))) this.next();
+                if ($(e.currentTarget).hasClass(trimDot(this.opt.arrowPrev))) this.prev();
 
-            return false;
-        });
+                return false;
+            });
+        }
 
-        this.$dot.on("click", (e)=>{
+        if(this.opt.useDots){
+            this.$dot.on("click", (e)=>{
 
-            if (this.isAnimate) return false;
+                if (this.isAnimate) return false;
 
-            var index = this.$dot.index(e.currentTarget);
+                var index = this.$dot.index(e.currentTarget);
 
-            var moveLength = index - this.currentIndex;
-            if (index === this.currentIndex) return false;
+                var moveLength = index - this.currentIndex;
+                if (index === this.currentIndex) return false;
 
-            this.isAnimate = true;
-            this.cancelTimerEvent();
+                this.isAnimate = true;
+                this.cancelTimerEvent();
 
-            this.moveToIndex(index);
-        });
+                this.moveToIndex(index);
+            });
+        }
     };
 
 

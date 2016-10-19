@@ -232,33 +232,37 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     Module.prototype.setClickEvent = function () {
         var _this3 = this;
 
-        this.$arrow.on("click", function (e) {
+        if (this.opt.useArrow) {
+            this.$arrow.on("click", function (e) {
 
-            if (_this3.isAnimate) return false;
+                if (_this3.isAnimate) return false;
 
-            _this3.isAnimate = true;
-            _this3.cancelTimerEvent();
+                _this3.isAnimate = true;
+                _this3.cancelTimerEvent();
 
-            if ($(e.currentTarget).hasClass(trimDot(_this3.opt.arrowNext))) _this3.next();
-            if ($(e.currentTarget).hasClass(trimDot(_this3.opt.arrowPrev))) _this3.prev();
+                if ($(e.currentTarget).hasClass(trimDot(_this3.opt.arrowNext))) _this3.next();
+                if ($(e.currentTarget).hasClass(trimDot(_this3.opt.arrowPrev))) _this3.prev();
 
-            return false;
-        });
+                return false;
+            });
+        }
 
-        this.$dot.on("click", function (e) {
+        if (this.opt.useDots) {
+            this.$dot.on("click", function (e) {
 
-            if (_this3.isAnimate) return false;
+                if (_this3.isAnimate) return false;
 
-            var index = _this3.$dot.index(e.currentTarget);
+                var index = _this3.$dot.index(e.currentTarget);
 
-            var moveLength = index - _this3.currentIndex;
-            if (index === _this3.currentIndex) return false;
+                var moveLength = index - _this3.currentIndex;
+                if (index === _this3.currentIndex) return false;
 
-            _this3.isAnimate = true;
-            _this3.cancelTimerEvent();
+                _this3.isAnimate = true;
+                _this3.cancelTimerEvent();
 
-            _this3.moveToIndex(index);
-        });
+                _this3.moveToIndex(index);
+            });
+        }
     };
 
     Module.prototype.setHoverEvent = function () {
