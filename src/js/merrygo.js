@@ -398,24 +398,23 @@
     };
 
 
+    /**
+     * あり得ない数値になった場合に丸める
+     * @return {object} this object
+     */
     Module.prototype.roundIndex = function(){
 
-        if (this.isValidIndex()){
-            this.currentIndex;
+        // itemLength より大きな数値になってしまったら0にする
+        if (this.currentIndex >= this.itemLength){
+            this.currentIndex = 0;
         }
 
+        // 0 より小さな数値になってしまったらitemLength - 1にする
         if (this.currentIndex < 0){
             this.currentIndex = this.itemLength - 1;
         }
 
-        this.currentIndex = 0;
-
         return this;
-    };
-
-
-    Module.prototype.isValidIndex = function(){
-        return 0 <= this.currentIndex && this.currentIndex + 1 <= this.itemLength;
     };
 
 
