@@ -1,6 +1,6 @@
 {
   "name": "merrygo",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "DOM carousel module",
   "author": "muyuu <anticyborg@gmail.com>",
   "license": {
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "babel": "gulp babel",
-    "dev": "gulp",
+    "start": "gulp",
     "build": "gulp build",
     "eslint": "eslint merrygo.js"
   },
