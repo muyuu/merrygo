@@ -1,9 +1,9 @@
 (function(definition){
     "use strict";
 
-    var moduleName = "merrygo";
+    const moduleName = "merrygo";
 
-    var root = (typeof self === "object" && self.self === self && self) || (typeof global === "object" && global.global === global && global);
+    const root = (typeof self === "object" && self.self === self && self) || (typeof global === "object" && global.global === global && global);
 
     if (typeof exports === "object"){
         module.exports = definition(root, require("jquery"));
@@ -36,16 +36,16 @@
      */
     function factory(param){
 
-        var rootElement = ".js-merrygo";
-        var opt = !isUndefined(param) ? param : {};
+        let rootElement = ".js-merrygo";
+        let opt = !isUndefined(param) ? param : {};
 
-        var $list;
+        let $list;
         if (isUndefined(opt.root)) $list = $(rootElement);
         if (!isUndefined(opt.root)) $list = opt.root instanceof $ ? param.root : $(param.root);
 
-        var length = $list.length;
-        var mappedlist = [];
-        for (var i = 0; i < length; i++) {
+        let length = $list.length;
+        let mappedlist = [];
+        for (let i = 0; i < length; i++) {
             mappedlist[i] = new Module(opt, $list[i]);
         }
         return mappedlist;
@@ -103,6 +103,7 @@
             onClick     : opt.onClick || null,
             onAnimateEnd: opt.onAnimateEnd || null
         };
+
 
         // elements
         this.$root = $(moduleRoot);

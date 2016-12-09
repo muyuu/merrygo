@@ -50,7 +50,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var rootElement = ".js-merrygo";
         var opt = !isUndefined(param) ? param : {};
 
-        var $list;
+        var $list = undefined;
         if (isUndefined(opt.root)) $list = $(rootElement);
         if (!isUndefined(opt.root)) $list = opt.root instanceof $ ? param.root : $(param.root);
 
