@@ -22,40 +22,38 @@ g.task("connect", () => {
     }));
 });
 
-g.task('css', ()=>{
-    return g.src(['src/css/style.sass'])
+g.task('css', ()=>
+    g.src(['src/css/style.sass'])
     .pipe($.sass())
-    .pipe(g.dest('./'));
-});
+    .pipe(g.dest('./'))
+);
 
-g.task('babel', ()=>{
-    return g.src([`src/js/${file}`])
+g.task('babel', ()=>
+    g.src([`src/js/${file}`])
     .pipe($.babel({
         presets: ['es2015']
     }))
-    .pipe(g.dest('./'));
-});
+    .pipe(g.dest('./'))
+);
 
-g.task('lint', ()=>{
-    return g.src([file])
+g.task('lint', ()=>
+    g.src([file])
     .pipe($.eslint())
-    .pipe($.eslint.format());
-});
+    .pipe($.eslint.format())
+);
 
 
-g.task('dev', ['babel'], ()=>{
-    return g.start(['lint']);
-});
+g.task('dev', ['babel'], ()=> g.start(['lint']) );
 
 g.task("default", ['connect'], ()=>{
     g.watch("src/**/*.js", ["dev"]);
-    g.watch("src/**/*.sass", ["css"]);
+    return g.watch("src/**/*.sass", ["css"]);
 });
 
 
  //build
-g.task('build', ()=>{
-    return g.src(file)
+g.task('build', ()=>
+    g.src(file)
     .pipe($.sourcemaps.init())
     .pipe($.rename({
         basename: `${filename}.min`,
@@ -63,7 +61,7 @@ g.task('build', ()=>{
     }))
     .pipe($.uglify())
     .pipe($.sourcemaps.write('./'))
-    .pipe(g.dest('./'));
-});
+    .pipe(g.dest('./'))
+);
 
 
