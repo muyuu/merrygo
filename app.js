@@ -28,5 +28,12 @@
         force: true,
         useDots: false
     });
+
+    merrygo({
+        root: ".js-merrygo04",
+        length: 3,
+        itemMargin: 10,
+        autoStart: false,
+    });
   });
 })(window, jQuery);

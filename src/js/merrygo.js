@@ -219,18 +219,19 @@
             itemMargin: !isUndefined(opt.itemMargin) ? opt.itemMargin : 0,
 
             //dots
-            useDots: !isUndefined(opt.useDots) ? opt.useDots : true,
-            dots: !isUndefined(opt.dots) ? opt.dots : ".js-merrygo__dots",
-            dot: !isUndefined(opt.dot) ? opt.dot : ".js-merrygo__dot",
+            useDots   : !isUndefined(opt.useDots) ? opt.useDots : true,
+            dots      : !isUndefined(opt.dots) ? opt.dots : ".js-merrygo__dots",
+            dot       : !isUndefined(opt.dot) ? opt.dot : ".js-merrygo__dot",
             dotContent: !isUndefined(opt.dotContent) ? opt.dotContent : "○",
 
             //state
             currentClass: !isUndefined(opt.currentClass) ? opt.currentClass : "current",
 
             //animation
-            duration: !isUndefined(opt.duration) ? opt.duration : 400,
-            interval: !isUndefined(opt.interval) ? opt.interval : 3000,
-            easing: !isUndefined(opt.easing) ? opt.easing : "linear",
+            autoStart: !isUndefined(opt.autoStart) ? opt.autoStart : true,
+            duration : !isUndefined(opt.duration) ? opt.duration : 400,
+            interval : !isUndefined(opt.interval) ? opt.interval : 3000,
+            easing   : !isUndefined(opt.easing) ? opt.easing : "linear",
 
             // callback
             onOpen      : opt.onOpen || null,
@@ -351,11 +352,13 @@
 
 
     Module.prototype.cancelTimerEvent = function(){
+        if( ! this.opt.autoStart ) return;
         clearInterval(this.timer);
     };
 
 
     Module.prototype.startTimerEvent = function(){
+        if( ! this.opt.autoStart ) return;
 
         clearInterval(this.timer);
 
