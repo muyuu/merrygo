@@ -1,12 +1,9 @@
 {
   "name": "merrygo",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "DOM carousel module",
   "author": "muyuu <anticyborg@gmail.com>",
-  "license": {
-    "type": "MIT",
-    "url": "http://muyuu.mit-license.org/"
-  },
+  "license": "MIT",
   "main": "merrygo.js",
   "repository": {
     "type": "git",
