@@ -352,11 +352,13 @@
 
 
     Module.prototype.cancelTimerEvent = function(){
+        if( ! this.opt.autoStart ) return;
         clearInterval(this.timer);
     };
 
 
     Module.prototype.startTimerEvent = function(){
+        if( ! this.opt.autoStart ) return;
 
         clearInterval(this.timer);
 

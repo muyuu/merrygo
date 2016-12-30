@@ -241,6 +241,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             currentClass: !isUndefined(opt.currentClass) ? opt.currentClass : "current",
 
             //animation
+            autoStart: !isUndefined(opt.autoStart) ? opt.autoStart : true,
             duration: !isUndefined(opt.duration) ? opt.duration : 400,
             interval: !isUndefined(opt.interval) ? opt.interval : 3000,
             easing: !isUndefined(opt.easing) ? opt.easing : "linear",
@@ -354,11 +355,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
 
     Module.prototype.cancelTimerEvent = function () {
+        if (!this.opt.autoStart) return;
         clearInterval(this.timer);
     };
 
     Module.prototype.startTimerEvent = function () {
         var _this2 = this;
+
+        if (!this.opt.autoStart) return;
 
         clearInterval(this.timer);
 
